@@ -3,6 +3,7 @@
 
 
 import cmd
+import models
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -75,21 +76,24 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, line):
-        """Print string representation of all instances based on class name"""
+        """Print string representation of
+        all instances based on class name"""
+
         if len(line) == 0:
-            print("** class name missing **")
-            return
-
-        class_name = line
-        if class_name not in self.all_classes:
+            dictio = models.storage.all()
+            listt = []
+            for key, value in dictio.items():
+                listt.append(str(value))
+            print(listt)
+        elif line.split()[0] not in self.all_classes:
             print("** class doesn't exist **")
-            return
-
-        instances = []
-        for key, value in storage.all().items():
-            if class_name == key.split('.')[0]:
-                instances.append(str(value))
-        print(instances)
+        else:
+            dictio = models.storage.all()
+            listt = []
+            for key, value in dictio.items():
+                if key.split(".")[0] == line.split()[0]:
+                    listt.append(str(value))
+            print(listt)
 
     def do_update(self, arg):
         """
