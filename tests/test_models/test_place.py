@@ -50,7 +50,6 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(city.longitude, 1.1)
         self.assertEqual(city.amenity_ids, ["10", "10"])
 
-
     def test_instance(self):
         city = Place()
         self.assertIsInstance(city, type(Place()))

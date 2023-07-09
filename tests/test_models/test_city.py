@@ -28,6 +28,6 @@ class TestCity(unittest.TestCase):
         self.assertIsInstance(city, type(City()))
 
     def test_same_obj(self):
-        citya= City()
+        citya = City()
         cityb = City()
         self.assertIsNot(citya, cityb)
