@@ -98,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
         by adding or updating attribute
         """
         args = arg.split()
-        if len(args) == 0:
+        if not arg:
             print("** class name missing **")
         elif args[0] not in self.all_classes:
             print("** class doesn't exist **")
